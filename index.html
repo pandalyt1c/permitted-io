@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>permitted.io — agent governance for operators</title>
+<meta name="description" content="permitted.io is the visibility and governance layer for AI agents. IAM Lens, Permitted MCP, and the upcoming Permitted SaaS.">
+<meta property="og:title" content="permitted.io">
+<meta property="og:description" content="Agent governance for operators. The IAM/CloudTrail layer for the agent era.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://permitted.io">
+<meta name="theme-color" content="#09090b">
+<style>
+  :root {
+    --bg: #09090b;
+    --surface: #18181b;
+    --border: #27272a;
+    --text: #f4f4f5;
+    --text-2: #a1a1aa;
+    --text-3: #52525b;
+    --green: #22c55e;
+    --amber: #f59e0b;
+    --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  a { color: var(--text); text-decoration: none; }
+  a:hover { color: var(--green); }
+  .wrap {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 32px 24px 64px;
+  }
+  header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 56px;
+  }
+  .logo {
+    width: 14px;
+    height: 14px;
+    background: var(--green);
+    border-radius: 2px;
+    display: inline-block;
+  }
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 15px;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+  .hero { padding: 24px 0 56px; }
+  .hero h1 {
+    font-size: clamp(28px, 4.4vw, 44px);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin: 0 0 20px;
+    font-weight: 600;
+    max-width: 720px;
+  }
+  .hero p {
+    color: var(--text-2);
+    font-size: 17px;
+    max-width: 640px;
+    margin: 0 0 12px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 8px 0 56px;
+  }
+  @media (min-width: 760px) {
+    .grid { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 20px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+  .card.link:hover { border-color: #3f3f46; }
+  .card.disabled { opacity: 0.85; }
+  .card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .card-name {
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--text);
+  }
+  .badge {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 3px 8px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    color: var(--text-2);
+    background: transparent;
+    white-space: nowrap;
+  }
+  .badge.live {
+    color: var(--green);
+    border-color: rgba(34, 197, 94, 0.35);
+    background: rgba(34, 197, 94, 0.08);
+  }
+  .badge.soon {
+    color: var(--amber);
+    border-color: rgba(245, 158, 11, 0.35);
+    background: rgba(245, 158, 11, 0.08);
+  }
+  .card p {
+    color: var(--text-2);
+    font-size: 14.5px;
+    margin: 0;
+    flex: 1;
+  }
+  .card-link {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--green);
+    margin-top: 4px;
+  }
+  .card-link.muted { color: var(--text-3); cursor: not-allowed; }
+  .about {
+    border-top: 1px solid var(--border);
+    padding-top: 40px;
+    max-width: 680px;
+  }
+  .about h2 {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--text-3);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+    margin: 0 0 16px;
+  }
+  .about p {
+    color: var(--text-2);
+    font-size: 15.5px;
+    margin: 0 0 14px;
+  }
+  footer {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-3);
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="logo" aria-hidden="true"></span>
+    <span class="wordmark">permitted.io</span>
+  </header>
+
+  <section class="hero">
+    <h1>Agent governance for operators.</h1>
+    <p>permitted.io is the visibility layer for the agent era — the IAM and CloudTrail equivalent for the AI agents and MCP servers your team is already running.</p>
+    <p>We build small, sharp tools for the people who have to answer for what those agents did. Two are live today. The full platform is in development.</p>
+  </section>
+
+  <section class="grid">
+    <a class="card link" href="https://iamlens.dev" target="_blank" rel="noopener">
+      <div class="card-head">
+        <span class="card-name">IAM Lens</span>
+        <span class="badge live">Live</span>
+      </div>
+      <p>Inspect AWS IAM policies and see exactly which principals can reach what. Free, browser-only, no upload.</p>
+      <span class="card-link">iamlens.dev &rarr;</span>
+    </a>
+
+    <a class="card link" href="/mcp">
+      <div class="card-head">
+        <span class="card-name">Permitted MCP</span>
+        <span class="badge live">Live</span>
+      </div>
+      <p>A reference MCP server and directory for understanding what tools your agents are exposing — and to whom.</p>
+      <span class="card-link">permitted.io/mcp &rarr;</span>
+    </a>
+
+    <div class="card disabled" aria-disabled="true">
+      <div class="card-head">
+        <span class="card-name">Permitted</span>
+        <span class="badge soon">Coming soon</span>
+      </div>
+      <p>The governance plane: continuous inventory, audit trail, and policy for every agent and MCP server in your org.</p>
+      <span class="card-link muted">join waitlist &mdash; soon</span>
+    </div>
+  </section>
+
+  <section class="about">
+    <h2>What is permitted.io</h2>
+    <p>Every company is quietly accumulating a fleet of AI agents — coding assistants, customer-support copilots, MCP servers wired to internal systems. There is no IAM for this. No CloudTrail. No one can answer the basic question of which agent did what, on whose behalf, with what permissions.</p>
+    <p>permitted.io is the picks-and-shovels layer for that gap. We aim at operators — founders, IT leads, agency owners — who need to know what is running before they need to defend it. Start with the free tools; the platform follows.</p>
+  </section>
+
+  <footer>
+    Built by pandalyt1c. v0.1.
+  </footer>
+</div>
+</body>
+</html>
